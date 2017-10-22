@@ -1,0 +1,204 @@
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 68286
+NEXRAD cell68286-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68286-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 64
+NEXRAD Cell ID: 68285
+NEXRAD cell68285-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68285-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 8
+NEXRAD Cell ID: 70535
+NEXRAD cell70535-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70535-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 68289
+NEXRAD cell68289-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68289-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 72786
+NEXRAD cell72786-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell72786-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 2
+NEXRAD Cell ID: 72336
+NEXRAD cell72336-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell72336-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 69637
+NEXRAD cell69637-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell69637-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 70087
+NEXRAD cell70087-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70087-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 2
+NEXRAD Cell ID: 70085
+NEXRAD cell70085-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70085-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 67834
+NEXRAD cell67834-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell67834-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 68288
+NEXRAD cell68288-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68288-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 2
+NEXRAD Cell ID: 71884
+NEXRAD cell71884-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell71884-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 67385
+NEXRAD cell67385-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell67385-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 68736
+NEXRAD cell68736-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68736-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 69185
+NEXRAD cell69185-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell69185-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 2
+NEXRAD Cell ID: 68289
+NEXRAD cell68289-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68289-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 71435
+NEXRAD cell71435-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell71435-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 2
+NEXRAD Cell ID: 70539
+NEXRAD cell70539-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70539-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 5
+NEXRAD Cell ID: 68283
+NEXRAD cell68283-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68283-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 70984
+NEXRAD cell70984-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70984-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 4
+NEXRAD Cell ID: 71888
+NEXRAD cell71888-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell71888-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 69183
+NEXRAD cell69183-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell69183-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 68286
+NEXRAD cell68286-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68286-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 2
+NEXRAD Cell ID: 72335
+NEXRAD cell72335-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell72335-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 68736
+NEXRAD cell68736-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68736-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 68287
+NEXRAD cell68287-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68287-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 69187
+NEXRAD cell69187-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell69187-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 70087
+NEXRAD cell70087-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70087-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 70087
+NEXRAD cell70087-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70087-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 2
+NEXRAD Cell ID: 70986
+NEXRAD cell70986-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70986-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 68736
+NEXRAD cell68736-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68736-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 3
+NEXRAD Cell ID: 69182
+NEXRAD cell69182-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell69182-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 2
+NEXRAD Cell ID: 70981
+NEXRAD cell70981-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70981-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 70088
+NEXRAD cell70088-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70088-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 2
+NEXRAD Cell ID: 70083
+NEXRAD cell70083-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70083-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 2
+NEXRAD Cell ID: 70983
+NEXRAD cell70983-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70983-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 68737
+NEXRAD cell68737-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68737-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 67386
+NEXRAD cell67386-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell67386-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 68738
+NEXRAD cell68738-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68738-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 70534
+NEXRAD cell70534-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70534-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 0
+NEXRAD Cell ID: 67834
+NEXRAD cell67834-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell67834-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 2
+NEXRAD Cell ID: 71437
+NEXRAD cell71437-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell71437-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 3
+NEXRAD Cell ID: 71432
+NEXRAD cell71432-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell71432-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 9
+NEXRAD Cell ID: 70533
+NEXRAD cell70533-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70533-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 69636
+NEXRAD cell69636-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell69636-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 4
+NEXRAD Cell ID: 69636
+NEXRAD cell69636-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell69636-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 3
+NEXRAD Cell ID: 70986
+NEXRAD cell70986-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70986-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 70983
+NEXRAD cell70983-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70983-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 68739
+NEXRAD cell68739-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68739-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 1
+NEXRAD Cell ID: 70084
+NEXRAD cell70084-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell70084-10-1-2008-9-30-2012.txt missing (na) days: 69
+Cocorahs gage missing precip (na) days: 3
+NEXRAD Cell ID: 68738
+NEXRAD cell68738-2-1-2002-9-30-2008.txt missing (na) days: 24
+NEXRAD cell68738-10-1-2008-9-30-2012.txt missing (na) days: 69

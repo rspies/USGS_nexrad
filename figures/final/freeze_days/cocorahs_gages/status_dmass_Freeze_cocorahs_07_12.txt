@@ -1,0 +1,6 @@
+2007-02-01 00:00:00 - 2012-09-30 23:00:00
+Analyzing: 51 stations
+Required number of gages each day set to: 10
+Days meeting freeze/thaw category: 604
+Total of those days with available gage/nexrad data: 569
+Missing days: 35

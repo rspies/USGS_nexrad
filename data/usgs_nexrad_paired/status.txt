@@ -1,0 +1,100 @@
+usgs gage missing (na) days: 14
+NEXRAD Cell ID: 70088
+NEXRAD cell70088-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell70088-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 192
+NEXRAD Cell ID: 69639
+NEXRAD cell69639-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell69639-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 1156
+NEXRAD Cell ID: 67836
+NEXRAD cell67836-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell67836-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 73
+NEXRAD Cell ID: 67837
+NEXRAD cell67837-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell67837-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 208
+NEXRAD Cell ID: 68285
+NEXRAD cell68285-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell68285-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 237
+NEXRAD Cell ID: 69188
+NEXRAD cell69188-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell69188-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 454
+NEXRAD Cell ID: 69187
+NEXRAD cell69187-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell69187-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 558
+NEXRAD Cell ID: 69184
+NEXRAD cell69184-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell69184-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 178
+NEXRAD Cell ID: 70538
+NEXRAD cell70538-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell70538-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 251
+NEXRAD Cell ID: 70534
+NEXRAD cell70534-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell70534-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 1681
+NEXRAD Cell ID: 67386
+NEXRAD cell67386-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell67386-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 155
+NEXRAD Cell ID: 68287
+NEXRAD cell68287-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell68287-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 42
+NEXRAD Cell ID: 68285
+NEXRAD cell68285-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell68285-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 185
+NEXRAD Cell ID: 69638
+NEXRAD cell69638-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell69638-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 491
+NEXRAD Cell ID: 69636
+NEXRAD cell69636-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell69636-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 189
+NEXRAD Cell ID: 69636
+NEXRAD cell69636-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell69636-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 135
+NEXRAD Cell ID: 70088
+NEXRAD cell70088-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell70088-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 313
+NEXRAD Cell ID: 70535
+NEXRAD cell70535-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell70535-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 304
+NEXRAD Cell ID: 70987
+NEXRAD cell70987-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell70987-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 963
+NEXRAD Cell ID: 70989
+NEXRAD cell70989-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell70989-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 624
+NEXRAD Cell ID: 71435
+NEXRAD cell71435-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell71435-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 374
+NEXRAD Cell ID: 68289
+NEXRAD cell68289-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell68289-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 472
+NEXRAD Cell ID: 68289
+NEXRAD cell68289-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell68289-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 244
+NEXRAD Cell ID: 71884
+NEXRAD cell71884-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell71884-10-1-2008-9-30-2012.txt missing (na) days: 69
+usgs gage missing (na) days: 202
+NEXRAD Cell ID: 72785
+NEXRAD cell72785-2-1-2002-9-30-2008.txt missing (na) days: 150
+NEXRAD cell72785-10-1-2008-9-30-2012.txt missing (na) days: 69
