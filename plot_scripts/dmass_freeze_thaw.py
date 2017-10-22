@@ -13,11 +13,11 @@ import matplotlib.pyplot as plt
 import my_plot_module
 import module_parse_txt
 
-os.chdir("../..")
+os.chdir("..")
 maindir = os.getcwd() + os.sep
 criteria = 'Freeze' # choices: 'Freeze', 'Thaw'
 netx = 'usgs' # choices: 'usgs', 'cocorahs'
-nety = 'cocorahs' # choices: 'nexrad', 'cocorahs'
+nety = 'nexrad' # choices: 'nexrad', 'cocorahs'
 
 ###### NEXRAD and USGS gages are adjusted in current HSPF application #######
 nexadj = gadj = 1.14 # 1.14
