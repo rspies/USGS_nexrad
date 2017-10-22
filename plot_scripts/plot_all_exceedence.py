@@ -10,8 +10,10 @@ import datetime
 from dateutil import parser
 import matplotlib.pyplot as plt
 import module_parse_txt
+import scipy.stats as scistat
 plt.ioff()
-maindir = os.getcwd()[:-27]
+os.chdir("..")
+maindir = os.getcwd() + os.sep
 
 fig = plt.figure()
 ax1 = fig.add_subplot(111)
@@ -29,10 +31,11 @@ else:
     text = ''
 #################################################################################
 ## calculate z-score for x axis labels
-zscore = []
+probs = []; zscore = []
 for each in exceed_prob_list:
-    zscore.append(1-each)
-
+    probs.append(1-each)
+zscores = scistat.norm.ppf(probs).tolist()
+zscore = [round(elem, 2) for elem in zscores]
 ################# create a list of days to use in the analysis ########################
 ystart = yone = 2007 # begin data grouping
 if gage_nets == ['usgs']:
@@ -118,6 +121,7 @@ for gage_net in gage_nets:
                     pnex = pdata[2].rstrip()
                     year = str(line[:4])
                     date = pdata[0]
+                    #if pgage != 'na' and pnex != 'na': # only use daily data when both gage and nexrad data available
                     if str(pgage).rstrip() != 'na' and date in temp_lib[criteria]:
                         if float(pgage) >= 0: # create a list of precip values >= 0.0in
                             all_gage.append(float(pgage))
@@ -128,7 +132,6 @@ for gage_net in gage_nets:
             txt_file.close()
 
     print 'Processing exceedance probability: '
-    import module_parse_txt
     all_gage_exceed,all_nex_exceed = module_parse_txt.exceedence_all_years(all_gage,all_nex,exceed_prob_list,gage_net,gage_nets,cnt,padj)
     print all_gage_exceed
     print all_nex_exceed
@@ -142,22 +145,34 @@ for gage_net in gage_nets:
             lab = 'Adjusted ' + gtype + 'USGS Gages '
         else:
             lab = gtype + 'USGS Gages '
-        ax1.plot(percent_exceed, all_gage_exceed, ls='-', color='blue', marker = 'o', lw=1.75, label = lab + text)
+        ax1.plot(zscore, all_gage_exceed, ls='-', color='blue', marker = 'o', lw=1.75, label = lab + text)
+#        if padj != 1.0:
+#            lab = 'Adjusted NEXRAD-MPE (USGS pair) '
+#        else:
+#            lab = 'NEXRAD-MPE (USGS pair) '
+#        ax1.plot(zscore, all_nex_exceed, ls='--', color='cyan', marker = 's', lw=1.75, label = lab + text)        
+        
     if gage_net == 'cocorahs':
-        ax1.plot(percent_exceed, all_gage_exceed, ls='-', color='gold', marker = 'o', lw=1.75, label = 'CoCoRaHS Gages')
+        ax1.plot(zscore, all_gage_exceed, ls='-', color='gold', marker = 'o', lw=1.75, label = 'CoCoRaHS Gages')
+#        if padj != 1.0:
+#            lab = 'Adjusted NEXRAD-MPE (CoCoRaHS pair) '
+#        else:
+#            lab = 'NEXRAD-MPE (CoCoRaHS pair) '
+#        ax1.plot(zscore, all_nex_exceed, ls='--', color='orange', marker = 's', lw=1.75, label = lab + text) 
+
     if cnt == len(gage_nets):
         if padj != 1.0:
             lab = 'Adjusted NEXRAD-MPE '
         else:
             lab = 'NEXRAD-MPE '
-        ax1.plot(percent_exceed, all_nex_exceed, ls='--', color='red', marker = 's', lw=1.75, label = lab + text)
+        ax1.plot(zscore, all_nex_exceed, ls='--', color='red', marker = 's', lw=1.75, label = lab + text)
 
 ##################### Add labels and Gridlines ##################################
 ax1.set_ylabel('Precipitation Depth (inches)\n Logarithmic Scale')
 #ax1.set_xlabel('Daily Exceedence Probability (Percent)')
-ax1.set_xlabel('Z-Score')
-ax1.set_xticks(percent_exceed) # only show the exceedence prob tick marks
-ax1.set_xticklabels(zscore,rotation=90)
+ax1.set_xlabel('Exceedance Probability')
+ax1.set_xticks(zscore) # only show the exceedence prob tick marks
+ax1.set_xticklabels(exceed_prob_list,rotation=90)
 ax1.set_yscale('log') # logarithmic y-axis scale
 #ax1.set_ylim([0.01,5])
 from matplotlib.ticker import ScalarFormatter
