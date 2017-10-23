@@ -12,6 +12,7 @@ import numpy
 import matplotlib.pyplot as plt
 import my_plot_module
 import module_parse_txt
+plt.ioff()
 
 os.chdir("..")
 maindir = os.getcwd() + os.sep
@@ -20,7 +21,7 @@ netx = 'usgs' # choices: 'usgs', 'cocorahs'
 nety = 'cocorahs' # choices: 'nexrad', 'cocorahs'
 
 ###### NEXRAD and USGS gages are adjusted in current HSPF application #######
-nexadj = gadj = 1.14 # 1.14
+nexadj = gadj = 1.00 # 1.14
 if netx == 'cocorahs': # don't adjust cocorahs data
     gadj = 1.0
 if netx == 'usgs' and nety == 'cocorahs': # don't apply adj to nety when compring usgs to cocorahs
@@ -208,17 +209,17 @@ if netx == 'cocorahs': # configure for weird CoCoRaHS capitalization in title
 if nety == 'cocorahs':
     namey = 'CoCoRaHS'
     
+if netx == 'usgs' and criteria == 'Freeze':
+    title_text+= 'Heated '
 if nety == 'nexrad':
     title_text+=(namex + ' Gages,')
 else:
-    if netx == 'usgs' and criteria == 'Freeze':
-        title_text+= 'Heated '
     title_text+=(namex + ' and ' + namey + ' Gages\n')
 
 if criteria == 'Thaw':
     plt.title('Double Mass Analysis of Cumulative Averages\n' + title_text +' Non-freezing Days: ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + ' - ' + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year),fontsize='13',y=1.006) #\n' + str(start)[:10] + ' -- ' + str(finish)[:10]  + ' (' + str(len(in_gage)) + ' days)')
 if criteria == 'Freeze':
-    plt.title('Double Mass Analysis of Cumulative Averages\n' + title_text +' Freeze Days: ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + ' - ' + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year),fontsize='13',y=1.006) # + str(start)[:10] + ' -- ' + str(finish)[:10] + ' (' + str(len(in_gage)) + ' days)')
+    plt.title('Double Mass Analysis of Cumulative Averages\n' + title_text +' Freezing Days: ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + ' - ' + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year),fontsize='13',y=1.006) # + str(start)[:10] + ' -- ' + str(finish)[:10] + ' (' + str(len(in_gage)) + ' days)')
 ax1.grid(True)
 ax1.legend(loc='lower right',numpoints = 1)
 
@@ -228,11 +229,11 @@ if nety == 'nexrad':
 else:
     netx = netx + '_vs_' + nety
 if nexadj == 1.0 and gadj == 1.0:
-    plt.savefig(maindir + '\\figures\\final\\' + criteria.lower() + '_days\\' + netx + '\\double_mass_' +str(ystart) +'_'+str(yend) + '.png', dpi=150, bbox_inches='tight')
+    plt.savefig(maindir + '\\figures\\final\\' + criteria.lower() + '_days\\' + netx + '\\dmass_' + criteria + '_' + netx[:4] +'-' + nety[:4] + '_' +str(ystart) +'_'+str(yend) + '.png', dpi=150, bbox_inches='tight')
 elif nexadj > 1.0:
-    plt.savefig(maindir + '\\figures\\final\\' + criteria.lower() + '_days\\' + netx + '\\double_mass_' +str(ystart) +'_'+str(yend) + '_adj_' + str(nexadj) +'.png', dpi=150, bbox_inches='tight')
+    plt.savefig(maindir + '\\figures\\final\\' + criteria.lower() + '_days\\' + netx + '\\dmass_' + criteria + '_' + netx[:4] +'-' + nety[:4] + '_' +str(ystart) +'_'+str(yend) + '_adj_' + str(nexadj) +'.png', dpi=150, bbox_inches='tight')
 else:
-    plt.savefig(maindir + '\\figures\\final\\' + criteria.lower() + '_days\\' + netx + '\\double_mass_' +str(ystart) +'_'+str(yend) + '_adj_' + str(gadj) +'.png', dpi=150, bbox_inches='tight')
+    plt.savefig(maindir + '\\figures\\final\\' + criteria.lower() + '_days\\' + netx + '\\dmass_' + criteria + '_' + netx[:4] +'-' + nety[:4] + '_' +str(ystart) +'_'+str(yend) + '_adj_' + str(gadj) +'.png', dpi=150, bbox_inches='tight')
 
 ############# Calculate difference statistics #####################
 pdiff = ((in_gage[-1]-in_nex[-1])/in_gage[-1])*100
