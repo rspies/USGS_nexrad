@@ -16,7 +16,7 @@ plt.ioff()
 os.chdir("..")
 maindir = os.getcwd() + os.sep
 
-criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 gage_net = 'cocorahs'
 point_labels = 'no' # choices: 'yes', 'no' #plot point number labels
 padj = 1.00
@@ -144,7 +144,7 @@ else:
     
 ################### Calculate Error Statistics and add to plot ################
 pbias, mae, ns = calc_errors.print_errors(in_gage,in_nex)
-textstr = '\nMean Percent Difference:\n' + r'$\frac{(y-x)}{x}$' + ' x 100 = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean Absolute Difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' in'  #Mean Absolute Difference
+textstr = '\nMean Percent Difference:\n' + r'$\frac{1}{n}\sum_{i=1}^n\frac{(y_i-x_i)}{x_i}$ = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean Absolute Difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' in'  #Mean Absolute Difference
 #textstr = 'Mean Percent Difference = ' + str('%.1f' % pbias) +'%\n' + 'Mean Absolute Difference = ' + str('%.2f' % mae) + ' in'
 # these are matplotlib.patch.Patch properties
 props = dict(boxstyle='round', facecolor = '0.8', alpha=0.5)
