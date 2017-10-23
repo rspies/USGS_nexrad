@@ -13,7 +13,8 @@ from matplotlib.ticker import MaxNLocator
 import matplotlib.pyplot as plt
 import module_parse_txt
 plt.ioff()
-maindir = os.getcwd()[:-27]
+os.chdir("..")
+maindir = os.getcwd() + os.sep
 
 ############# USER INPUT BLOCK ###############################################
 gage_net = 'cocorahs' # choices: 'usgs' or 'cocorahs'

@@ -12,15 +12,16 @@ from scipy import stats
 import matplotlib.pyplot as plt
 plt.ioff()
 
-criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 gage_net = 'cocorahs'
 padj = 1.14
 
-maindir = os.getcwd()[:-27]
+os.chdir("..")
+maindir = os.getcwd() + os.sep
 ################# create a list of days to use in the analysis ########################
 ystart = 2007 # begin data grouping
 yend = 2012 # end data grouping
-start = datetime.datetime(ystart, 1, 1, 0, 0)
+start = datetime.datetime(ystart, 2, 1, 0, 0)
 finish = datetime.datetime(yend, 9, 30, 23, 0)
 
 print 'Processing: ' + gage_net + ' gages...'
