@@ -15,9 +15,9 @@ import module_parse_txt
 
 os.chdir("..")
 maindir = os.getcwd() + os.sep
-criteria = 'Freeze' # choices: 'Freeze', 'Thaw'
+criteria = 'Thaw' # choices: 'Freeze', 'Thaw'
 netx = 'usgs' # choices: 'usgs', 'cocorahs'
-nety = 'nexrad' # choices: 'nexrad', 'cocorahs'
+nety = 'cocorahs' # choices: 'nexrad', 'cocorahs'
 
 ###### NEXRAD and USGS gages are adjusted in current HSPF application #######
 nexadj = gadj = 1.14 # 1.14
@@ -25,7 +25,7 @@ if netx == 'cocorahs': # don't adjust cocorahs data
     gadj = 1.0
 if netx == 'usgs' and nety == 'cocorahs': # don't apply adj to nety when compring usgs to cocorahs
     nexadj = 1.0
-##### Snow Correction Factor (usgs gages only) #####
+##### Snow Correction Factor (usgs gages only) ##### set to 1.0 to ignore
 if criteria == 'Freeze' and netx == 'usgs':
     scf = 1.0
 else:
@@ -44,12 +44,20 @@ print 'Time Period: ' + str(start) + ' - ' + str(finish)
 ################## Parse Argonne temperature file ################################    
 # Loop through the Agronne temperature freeze criteria file previously generated
 # Create a dictionary of dates for both the freeze and thaw criteria
+if gadj != 1.0:
+    gadj_label = '_adj_' + str(gadj)
+else:
+    gadj_label = ''
+if nexadj != 1.0:
+    nexadj_label = '_adj_' + str(nexadj)
+else:
+    nexadj_label = ''
 if nety == 'nexrad':
     fstatus = open(maindir + '\\figures\\final\\' + criteria.lower() + '_days\\' + netx 
-+ '_gages' + '\\status_dmass_' + criteria + '_' + netx + '_' + str(ystart)[-2:] + '_' + str(yend)[-2:] + '.txt', 'w')
++ '_gages' + '\\status_dmass_' + criteria + '_' + netx + '_' + str(ystart)[-2:] + '_' + str(yend)[-2:] + nexadj_label + '.txt', 'w')
 else:
     fstatus = open(maindir + '\\figures\\final\\' + criteria.lower() + '_days\\' + netx 
-+ '_vs_' + nety + '\\status_dmass_' + criteria + '_' + str(ystart)[-2:] + '_' + str(yend)[-2:] + '.txt', 'w')
++ '_vs_' + nety + '\\status_dmass_' + criteria + '_' + str(ystart)[-2:] + '_' + str(yend)[-2:] + gadj_label + '.txt', 'w')
 
 
 print 'Examing:' + criteria + ' days...'
@@ -194,12 +202,18 @@ else:
     ax1.set_xlabel('Cumulative Average of\n' + netx_name + ' Gage Precipitation (inches)')
 ######### Add Title ###########
 title_text = ''
+namex = netx.upper(); namey = nety.upper()
+if netx == 'cocorahs': # configure for weird CoCoRaHS capitalization in title
+    namex = 'CoCoRaHS'
+if nety == 'cocorahs':
+    namey = 'CoCoRaHS'
+    
 if nety == 'nexrad':
-    title_text+=(netx.upper() + ' Gages,')
+    title_text+=(namex + ' Gages,')
 else:
     if netx == 'usgs' and criteria == 'Freeze':
         title_text+= 'Heated '
-    title_text+=(netx.upper() + ' and ' + nety.upper() + ' Gages\n')
+    title_text+=(namex + ' and ' + namey + ' Gages\n')
 
 if criteria == 'Thaw':
     plt.title('Double Mass Analysis of Cumulative Averages\n' + title_text +' Non-freezing Days: ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + ' - ' + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year),fontsize='13',y=1.006) #\n' + str(start)[:10] + ' -- ' + str(finish)[:10]  + ' (' + str(len(in_gage)) + ' days)')
