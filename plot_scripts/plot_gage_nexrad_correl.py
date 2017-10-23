@@ -25,7 +25,7 @@ else:
     scf = 1.0
 
 ################# create a list of days to use in the analysis ########################
-ystart = 2007 # begin data grouping
+ystart = 2002 # begin data grouping
 yend = 2012 # end data grouping
 start = datetime.datetime(ystart, 2, 1, 0, 0)
 finish = datetime.datetime(yend, 9, 30, 23, 0)
@@ -159,7 +159,7 @@ for gage_type in gage_types:
     
     ################### Calculate Error Statistics and add to plot ################
     pbias, mae, ns = calc_errors.print_errors(in_gage,in_nex)
-    textstr = '\nMean Percent Difference:\n' + r'$\frac{(y-x)}{x}$' + ' x 100 = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean Absolute Difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x\vert$ = '+ str('%.2f' % mae) + ' in'  #Mean Absolute Difference
+    textstr = '\nMean Percent Difference:\n' + r'$\frac{(y-x)}{x}$' + ' x 100 = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean Absolute Difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' in'  #Mean Absolute Difference
     # these are matplotlib.patch.Patch properties
     props = dict(boxstyle='round', facecolor = '0.8', alpha=0.5)
     
