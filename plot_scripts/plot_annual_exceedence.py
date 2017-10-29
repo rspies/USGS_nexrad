@@ -18,7 +18,7 @@ maindir = os.getcwd() + os.sep
 
 ############# USER INPUT BLOCK ###############################################
 gage_nets = ['cocorahs','usgs'] # choices: 'usgs' or 'cocorahs'
-criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 exceed_prob_list = [0.025, 0.05, 0.10, 0.25] # decimal exceendence probablity option (enter 0 to ignore)
 padj = 1.14
 ################# create a list of days to use in the analysis ########################
@@ -87,16 +87,21 @@ for exceed_prob in exceed_prob_list:
         # for each data found in the paired files
         yr_lib_gage = {} # create a library of annual data for gage data
         if count == 1: # only initialize (create empty) dictionary for the first gage_net -> allows nexrad data to include pairs for all gage_nets
-            yr_lib_nex = {} # create a library of annual data for nexrad data
+            yr_lib_nex = {}; all_values_all_nex={} # create a library of annual data for nexrad data
         pfiles = os.listdir(maindir + 'data\\' + gage_net[:4] + '_nexrad_paired\\')    
+        all_values_all_gages={}; num_gages = len(pfiles)
+        gage_cnt = 0
         for each_pair in pfiles:
-            miss_cnt = 0
+            gage_cnt += 1
             if each_pair[:1] != 's' and each_pair[:-4] in gages_met: #ignores status.txt file
                 popen = open(maindir + 'data\\' + gage_net[:4] + '_nexrad_paired\\' + each_pair ,'r')
                 #print each_pair
                 import module_parse_txt
                 time_period = 'annual' # this tells the module to compute theshold values annually
                 yr_lib_gage,yr_lib_nex = module_parse_txt.exceedence(popen,exceed_prob,temp_lib,criteria,yr_lib_gage,yr_lib_nex)
+                popen.close()
+                popen = open(maindir + 'data\\' + gage_net[:4] + '_nexrad_paired\\' + each_pair ,'r')
+                yr_lib_all_gages,yr_lib_all_nex,all_values_all_gages,all_values_all_nex = module_parse_txt.exceedence_years(popen,exceed_prob,temp_lib,criteria,all_values_all_gages,all_values_all_nex,gage_cnt,num_gages)
                 popen.close()
           
         ############ Check to use only years containing adequate data #######
@@ -119,15 +124,15 @@ for exceed_prob in exceed_prob_list:
         in_gage = []; in_nex = []
         for all_site_gage in years_plot:
             if gage_net == 'usgs' and padj > 1.0:
-                in_gage.append(round(numpy.mean(yr_lib_gage[str(all_site_gage)])*padj,3))
+                in_gage.append(round(numpy.mean(yr_lib_all_gages[str(all_site_gage)])*padj,3))
             else:
-                in_gage.append(round(numpy.mean(yr_lib_gage[str(all_site_gage)]),3))
+                in_gage.append(round(numpy.mean(yr_lib_all_gages[str(all_site_gage)]),3))
         for all_site_nex in years_plot:
             if padj > 1.0:
                 print 'PADJ = ' + str(padj)
-                in_nex.append(round(numpy.mean(yr_lib_nex[str(all_site_nex)])*padj,3))
+                in_nex.append(round(numpy.mean(yr_lib_all_nex[str(all_site_nex)])*padj,3))
             else:
-                in_nex.append(round(numpy.mean(yr_lib_nex[str(all_site_nex)]),3))
+                in_nex.append(round(numpy.mean(yr_lib_all_nex[str(all_site_nex)]),3))
         print in_gage
         print in_nex
     

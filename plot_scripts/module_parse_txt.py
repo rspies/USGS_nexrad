@@ -176,6 +176,50 @@ def exceedence(txt_file,exceed_prob,temp_days,temp_criteria,yr_lib_gage,yr_lib_n
             yr_lib_nex[each_yr] = [threshold]
 
     return (yr_lib_gage,yr_lib_nex)
+    
+###############################################################################
+def exceedence_years(txt_file,exceed_prob,temp_days,temp_criteria,all_values_all_gages,all_values_all_nex,gage_cnt,num_gages):  
+    yr_lib_all_gages={}; yr_lib_all_nex={}
+    for line in txt_file:
+        if line[:2] == '20': #ignores header
+            pdata = line.split('\t')
+            pgage = pdata[1].rstrip()
+            pnex = pdata[2].rstrip()
+            year = str(line[:4])
+            date = pdata[0]
+            if str(pgage).rstrip() != 'na' and date in temp_days[temp_criteria]:
+                if float(pgage) >= 0:  # create a list of precip values >= 0.0in
+                    #keep a running dictionary with data for all gages
+                    if year in all_values_all_gages:
+                        all_values_all_gages[year].append(float(pgage))
+                    else:
+                        all_values_all_gages[year] = [float(pgage)]
+            
+            if str(pnex).rstrip() != 'na' and date in temp_days[temp_criteria]:
+                if float(pnex) >= 0:  # create a list of precip values >= 0.0in
+                    #keep a running dictionary with data for all gages/cells
+                    if year in all_values_all_nex:
+                        all_values_all_nex[year].append(float(pnex))
+                    else:
+                        all_values_all_nex[year] = [float(pnex)]
+
+    # perform exceendance calculations using data for all gages as opposed to by gage from above
+    print gage_cnt
+    
+    ###### GAGE: calc exceedence values annually and append to year library ######
+    for each_yr in all_values_all_gages:
+        all_sort_gage = sorted(all_values_all_gages[each_yr], reverse=True)
+        rank_gage = int(exceed_prob * (len(all_sort_gage) + 1))
+        threshold = all_sort_gage[rank_gage - 1]
+        yr_lib_all_gages[each_yr] = [threshold]
+    ###### GAGE: calc exceedence values annually and append to year library ######
+    for each_yr in all_values_all_nex:
+        all_sort_nex = sorted(all_values_all_nex[each_yr], reverse=True)
+        rank_nex = int(exceed_prob * (len(all_sort_nex) + 1))
+        threshold = all_sort_nex[rank_nex - 1]
+        yr_lib_all_nex[each_yr] = [threshold]
+
+    return (yr_lib_all_gages,yr_lib_all_nex,all_values_all_gages,all_values_all_nex)
 ###############################################################################
 
 def exceedence_all_years(all_gage,all_nex,exceed_prob_list,gage_net,gage_nets,cnt,padj):  
