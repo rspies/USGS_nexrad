@@ -10,14 +10,14 @@ import datetime
 import numpy
 from dateutil import parser
 import matplotlib.pyplot as plt
-os.chdir("../..")
-maindir = os.getcwd() + '\\'
+os.chdir("..")
+maindir = os.getcwd() + os.sep
 
 ######### User Input -> Options ############
 csv_out = 'no'
 mean_hist = 'yes'  # choice to creat plot 'yes' or 'no'
-type_plot = 'Hours Precip' # choices: 'Mean', 'Mean Intensity', 'Mean Cell', 'Total', 'Temperature Frequency', 'Hours Precip'
-type_plot2 = '' # choices: 'Temperature Frequency', ''
+type_plot = 'Mean Cell' # choices: 'Mean', 'Mean Intensity', 'Mean Cell', 'Total', 'Temperature Frequency', 'Hours Precip'
+type_plot2 = 'Temperature Frequency' # choices: 'Temperature Frequency', ''
 
 ### calculate helpful summary statistics input ###
 # temp range
@@ -174,7 +174,7 @@ if mean_hist == 'yes':
                 #mean_precip = numpy.mean(date_list[timestep][1:])
                 if every != 'na':
                     if type_plot == 'Mean Intensity' or type_plot == 'Hours Precip':
-                        if every > 0.0:
+                        if every > 0.0: # only examine precip values of 0.01 or greater
                             for key in categories:
                                 if temp >= categories[key][0] and temp <= categories[key][1]:
                                     key_in = key
