@@ -15,7 +15,7 @@ plt.ioff()
 os.chdir("..")
 maindir = os.getcwd() + os.sep
 
-criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 gage_types = ['All','Heated','Non-Heated']
 point_labels = 'no' # choices: 'yes', 'no' #plot point number labels
 padj = 1.14 # 1.14 apply the precip adj factor to both nexrad and usgs gage data
@@ -25,7 +25,7 @@ else:
     scf = 1.0
 
 ################# create a list of days to use in the analysis ########################
-ystart = 2002 # begin data grouping
+ystart = 2007 # begin data grouping
 yend = 2012 # end data grouping
 start = datetime.datetime(ystart, 2, 1, 0, 0)
 finish = datetime.datetime(yend, 9, 30, 23, 0)
@@ -182,7 +182,7 @@ for gage_type in gage_types:
     if criteria == 'Thaw':
         text = 'Non-freezing Days'
     if criteria == 'Freeze':
-        text = 'Freeze Days'
+        text = 'Freezing Days'
     ax1.set_title('Pointwise Total of Gages and Overlying NEXRAD cells\n' + gage_type + ' USGS Gages, ' + text + ': ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + ' - ' + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year))
     ax1.grid(True)
     ax1.legend(loc='lower right',numpoints = 1)

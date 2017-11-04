@@ -16,8 +16,8 @@ maindir = os.getcwd() + os.sep
 ######### User Input -> Options ############
 csv_out = 'no'
 mean_hist = 'yes'  # choice to creat plot 'yes' or 'no'
-type_plot = 'Mean Cell' # choices: 'Mean', 'Mean Intensity', 'Mean Cell', 'Total', 'Temperature Frequency', 'Hours Precip'
-type_plot2 = 'Temperature Frequency' # choices: 'Temperature Frequency', ''
+type_plot = 'Fraction Hours Precip' # choices: 'Mean', 'Mean Intensity', 'Mean Cell', 'Total', 'Temperature Frequency', 'Hours Precip', 'Fraction Hours Precip'
+type_plot2 = '' # choices: 'Temperature Frequency', ''
 
 ### calculate helpful summary statistics input ###
 # temp range
@@ -156,7 +156,7 @@ if mean_hist == 'yes':
         min_temp += temp_interval
 
     # create dictionary with categorized precip and temp data     
-    all_prec = {}; all_temp = {}
+    all_prec = {}; all_temp = {}; all_prec0 = {}
     for timestep in sorted(date_list):
         if len(date_list[timestep]) >= len(cor_nexcell):
             ############## analyze temperature data into bins
@@ -164,7 +164,7 @@ if mean_hist == 'yes':
             for key in categories:
                 if temp >= categories[key][0] and temp <= categories[key][1]:
                     key_in = key
-                    if key_in in all_prec:
+                    if key_in in all_temp:
                         all_temp[key_in].append(temp)
                     else:
                         all_temp[key_in] = [temp]
@@ -173,7 +173,17 @@ if mean_hist == 'yes':
             for every in date_list[timestep][1:]: # only look at the precip data -> starts at index 1
                 #mean_precip = numpy.mean(date_list[timestep][1:])
                 if every != 'na':
-                    if type_plot == 'Mean Intensity' or type_plot == 'Hours Precip':
+                    if type_plot == 'Fraction Hours Precip':
+                        if every >= 0.0: # need both 0 and > 0 hours for fraction of hours plot
+                            for key in categories:
+                                if temp >= categories[key][0] and temp <= categories[key][1]:
+                                    key_in = key
+                                    if key_in in all_prec0:
+                                        all_prec0[key_in].append(every)
+                                    else:
+                                        all_prec0[key_in] = [every]
+                                    break
+                    if type_plot == 'Mean Intensity' or type_plot == 'Hours Precip' or type_plot == 'Fraction Hours Precip':
                         if every > 0.0: # only examine precip values of 0.01 or greater
                             for key in categories:
                                 if temp >= categories[key][0] and temp <= categories[key][1]:
@@ -218,6 +228,10 @@ if mean_hist == 'yes':
                 ax1.bar(loc+(width/2.0), len(all_prec[cats]), width, color = 'green')
                 if loc< 1:
                     ax1.bar(loc+(width/2.0), len(all_prec[cats]), width, color = 'green', label = 'NEXRAD-MPE Spatial Average (50 cells)')
+            if type_plot == 'Fraction Hours Precip': # only precip hours
+                ax1.bar(loc+(width/2.0), len(all_prec[cats])/float(len(all_prec0[cats])), width, color = 'green')
+                if loc< 1:
+                    ax1.bar(loc+(width/2.0), len(all_prec[cats])/float(len(all_prec0[cats])), width, color = 'green', label = 'NEXRAD-MPE Spatial Average (50 cells)')
             if type_plot == 'Mean Cell':
                 ax1.bar(loc+(width/2.0), sum(all_prec[cats])/len(cor_nexcell), width, color = 'green')
                 if loc < 1: # only add 1 feature to legend
@@ -247,6 +261,9 @@ if mean_hist == 'yes':
     elif type_plot == 'Hours Precip':
         ax1.set_ylabel('Hours with Precipitation (50 NEXRAD-MPE cells)')
         ax1.set_title('Hours with Precipitation within Temperature Bins\n'  + 'During All Hours: ' + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
+    elif type_plot == 'Fraction Hours Precip':
+        ax1.set_ylabel('Fraction of Hours with Precipitation\n(50 NEXRAD-MPE cells)',fontsize = 10)
+        ax1.set_title('Fraction of Hours with Precipitation by Temperature\n'  + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
 
     
     if type_plot2 == 'Temperature Frequency':
