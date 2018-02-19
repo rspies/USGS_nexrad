@@ -16,7 +16,7 @@ plt.ioff()
 os.chdir("..")
 maindir = os.getcwd() + os.sep
 
-criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 gage_net = 'cocorahs'
 point_labels = 'no' # choices: 'yes', 'no' #plot point number labels
 padj = 1.00
@@ -144,7 +144,7 @@ else:
     
 ################### Calculate Error Statistics and add to plot ################
 pbias, mae, ns = calc_errors.print_errors(in_gage,in_nex)
-textstr = '\nMean Percent Difference:\n' + r'$\frac{1}{n}\sum_{i=1}^n\frac{(y_i-x_i)}{x_i}$ = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean Absolute Difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' in'  #Mean Absolute Difference
+textstr = '\nMean Percent Difference:\n' + r'$\frac{1}{n}\sum_{i=1}^n\frac{(y_i-x_i)}{x_i}$ = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean Absolute Difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' inches'  #Mean Absolute Difference
 #textstr = 'Mean Percent Difference = ' + str('%.1f' % pbias) +'%\n' + 'Mean Absolute Difference = ' + str('%.2f' % mae) + ' in'
 # these are matplotlib.patch.Patch properties
 props = dict(boxstyle='round', facecolor = '0.8', alpha=0.5)
@@ -159,16 +159,17 @@ if point_labels == 'yes':
     my_plot_module.annotates_number(gage_lib,in_gage,in_nex,ax1,gages_nums)
 
 ##################### Add labels and Gridlines ##################################
-ax1.set_xlabel('Total CoCoRaHS Gage Precipitation (inches)')
+ax1.set_xlabel('Total CoCoRaHS gage precipitation (inches)')
 if padj > 1.0:
-    ax1.set_ylabel('Total Adjusted NEXRAD-MPE Precipitation (inches)')
+    ax1.set_ylabel('Total adjusted NEXRAD-MPE precipitation (inches)')
 else:
-    ax1.set_ylabel('Total NEXRAD-MPE Precipitation (inches)')
+    ax1.set_ylabel('Total NEXRAD-MPE precipitation (inches)')
 if criteria == 'Thaw':
-    text = 'Non-freezing Days'
+    text = 'Nonfreezing days'
 if criteria == 'Freeze':
-    text = 'Freezing Days'
-ax1.set_title('Pointwise Total of Gages and Overlying NEXRAD cells\n' + 'CoCoRaHS Gages, ' + text + ': ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + ' - ' + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year))
+    text = 'Freezing days'
+#ax1.set_title('Pointwise Total of Gages and Overlying NEXRAD cells\n' + 'CoCoRaHS Gages, ' + text + ': ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + ' - ' + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year))
+ax1.set_title(text + ', ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + u"\u2013" + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year))
 ax1.grid(True)
 ax1.legend(loc='lower right',numpoints = 1)
 

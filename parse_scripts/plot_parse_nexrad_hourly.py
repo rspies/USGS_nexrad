@@ -9,6 +9,7 @@ import os
 import datetime
 import numpy
 from dateutil import parser
+import matplotlib
 import matplotlib.pyplot as plt
 os.chdir("..")
 maindir = os.getcwd() + os.sep
@@ -16,7 +17,7 @@ maindir = os.getcwd() + os.sep
 ######### User Input -> Options ############
 csv_out = 'no'
 mean_hist = 'yes'  # choice to creat plot 'yes' or 'no'
-type_plot = 'Fraction Hours Precip' # choices: 'Mean', 'Mean Intensity', 'Mean Cell', 'Total', 'Temperature Frequency', 'Hours Precip', 'Fraction Hours Precip'
+type_plot = 'Mean' # choices: 'Mean', 'Mean Intensity', 'Mean Cell', 'Total', 'Temperature Frequency', 'Hours Precip', 'Fraction Hours Precip'
 type_plot2 = '' # choices: 'Temperature Frequency', ''
 
 ### calculate helpful summary statistics input ###
@@ -219,19 +220,19 @@ if mean_hist == 'yes':
             if type_plot == 'Mean Intensity': # only precip hours
                 ax1.bar(loc+(width/2.0), numpy.mean(all_prec[cats]), width, color = 'green')
                 if loc < 1:
-                    ax1.bar(loc+(width/2.0), numpy.mean(all_prec[cats]), width, color = 'green', label = 'NEXRAD-MPE Spatial Average (50 cells)')
+                    ax1.bar(loc+(width/2.0), numpy.mean(all_prec[cats]), width, color = 'green')#, label = 'NEXRAD-MPE Spatial Average (50 cells)')
             if type_plot == 'Mean': # all hours included (0's)
                 ax1.bar(loc+(width/2.0), numpy.mean(all_prec[cats]), width, color = 'green')
                 if loc< 1:
-                    ax1.bar(loc+(width/2.0), numpy.mean(all_prec[cats]), width, color = 'green', label = 'NEXRAD-MPE Spatial Average (50 cells)')
+                    ax1.bar(loc+(width/2.0), numpy.mean(all_prec[cats]), width, color = 'green')#, label = 'NEXRAD-MPE Spatial Average (50 cells)')
             if type_plot == 'Hours Precip': # only precip hours
                 ax1.bar(loc+(width/2.0), len(all_prec[cats]), width, color = 'green')
                 if loc< 1:
-                    ax1.bar(loc+(width/2.0), len(all_prec[cats]), width, color = 'green', label = 'NEXRAD-MPE Spatial Average (50 cells)')
+                    ax1.bar(loc+(width/2.0), len(all_prec[cats]), width, color = 'green')#, label = 'NEXRAD-MPE Spatial Average (50 cells)')
             if type_plot == 'Fraction Hours Precip': # only precip hours
                 ax1.bar(loc+(width/2.0), len(all_prec[cats])/float(len(all_prec0[cats])), width, color = 'green')
                 if loc< 1:
-                    ax1.bar(loc+(width/2.0), len(all_prec[cats])/float(len(all_prec0[cats])), width, color = 'green', label = 'NEXRAD-MPE Spatial Average (50 cells)')
+                    ax1.bar(loc+(width/2.0), len(all_prec[cats])/float(len(all_prec0[cats])), width, color = 'green')#, label = 'NEXRAD-MPE Spatial Average (50 cells)')
             if type_plot == 'Mean Cell':
                 ax1.bar(loc+(width/2.0), sum(all_prec[cats])/len(cor_nexcell), width, color = 'green')
                 if loc < 1: # only add 1 feature to legend
@@ -247,36 +248,37 @@ if mean_hist == 'yes':
        
     ax1.set_xlim([0+(width/2),len(categories)-(width/2)]) # remove white space at end of bar plot
     if type_plot == 'Temperature Frequency':
-        ax1.set_ylabel('Number of Hourly Observations')
-        ax1.set_title('Temperature Frequency\n'  + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
+        ax1.set_ylabel('Number of hourly observations')
+        #ax1.set_title('Temperature Frequency\n'  + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
     elif type_plot == 'Mean Cell':
-        ax1.set_ylabel('Accumulated Precipitation Depth (inches)')
-        ax1.set_title('Mean NEXRAD-MPE\n'  + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
+        ax1.set_ylabel('Accumulated precipitation depth (inches)')
+        #ax1.set_title('Mean NEXRAD-MPE\n'  + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
     elif type_plot == 'Mean Intensity':
-        ax1.set_ylabel('Precipitation Intensity (in/hr)')
-        ax1.set_title('Spatial Mean Hourly NEXRAD-MPE Average Intensity\n'  + 'During Hours with Precipitation: ' + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
+        ax1.set_ylabel('Precipitation intensity (in/hr)')
+        #ax1.set_title('Spatial Mean Hourly NEXRAD-MPE Average Intensity\n'  + 'During Hours with Precipitation: ' + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
     elif type_plot == 'Mean':
-        ax1.set_ylabel('Precipitation Intensity (in/hr)')
-        ax1.set_title('Spatial Mean Hourly NEXRAD-MPE Average Intensity\n'  + 'During All Hours: ' + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
+        ax1.set_ylabel('Precipitation intensity (in/hr)')
+        #ax1.set_title('Spatial Mean Hourly NEXRAD-MPE Average Intensity\n'  + 'During All Hours: ' + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
     elif type_plot == 'Hours Precip':
-        ax1.set_ylabel('Hours with Precipitation (50 NEXRAD-MPE cells)')
-        ax1.set_title('Hours with Precipitation within Temperature Bins\n'  + 'During All Hours: ' + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
+        ax1.set_ylabel('Hours with precipitation')
+        #ax1.set_title('Hours with Precipitation within Temperature Bins\n'  + 'During All Hours: ' + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
     elif type_plot == 'Fraction Hours Precip':
-        ax1.set_ylabel('Fraction of Hours with Precipitation\n(50 NEXRAD-MPE cells)',fontsize = 10)
-        ax1.set_title('Fraction of Hours with Precipitation by Temperature\n'  + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
+        ax1.set_ylabel('Fraction of hours with precipitation',fontsize = 10)
+        #ax1.set_title('Fraction of Hours with Precipitation by Temperature\n'  + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
 
     
     if type_plot2 == 'Temperature Frequency':
-        ax2.set_ylabel('Number of Hourly Temperature Observations')
+        ax2.set_ylabel('Number of hourly temperature observations')
+        ax2.get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
         ax1.legend(loc='upper left',numpoints = 1, fontsize = 10)
         ax2.legend(loc='upper right',numpoints = 1, fontsize = 10)
-        ax1.set_title('Spatial Mean Accumulated NEXRAD-MPE and Temperature Frequency\n'  + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
+        #ax1.set_title('Spatial Mean Total NEXRAD-MPE and Temperature Frequency\n'  + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
         type_plot = 'mean_mpe_and_tfreq'
     if type_plot == 'Mean Intensity' or type_plot == 'Mean':
         ax1.legend(loc='upper left',numpoints = 1, fontsize = 10)
 
         
-    ax1.set_xlabel('Argonne National Laboratory Temperature (' + r'$^o$F)')
+    ax1.set_xlabel('Argonne National Laboratory temperature (' + r'$^o$F)')
     tick_num = numpy.arange(len(categories))
     ax1.set_xticks(tick_num+width)
     tick_labels = []

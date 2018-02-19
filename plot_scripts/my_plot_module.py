@@ -27,9 +27,9 @@ def colormap(in_fig,axes,x,y,color_values,text):
     if np.max(color_values)-np.min(color_values) < 10: # this fixes the issue with having decimal values in tick labels (want whole # gages)
         interval = 1
         tick_list = range(np.min(color_values),np.max(color_values)+1,interval)
-        cbar = in_fig.colorbar(p, cmap=cmap, shrink=0.6, ticks=[tick_list])
+        cbar = in_fig.colorbar(p, cmap=cmap, shrink=0.6, ticks=[tick_list],pad=0.01)
     else:
-        cbar = in_fig.colorbar(p, cmap=cmap, shrink=0.6)
+        cbar = in_fig.colorbar(p, cmap=cmap, shrink=0.6,pad=0.01)
     cbar.ax.set_ylabel(text, rotation=270,labelpad=15)
 ###############################################################################    
 def axis_limits(x,y,axes):
@@ -82,17 +82,17 @@ def annotate_dates(criteria,ystart,finish,date_plot,x,y,axes):
     
     for tick_yr in date_list: # always label first and last data point
         if tick_yr == min(date_list) or tick_yr == date_list[1]:
-            axes.annotate(tick_yr[:-9], xy=(x[date_plot.index(tick_yr)], 
+            axes.annotate(datetime.datetime.strptime(tick_yr,'%Y-%m-%d %H:%M:%S').strftime('%#m/%#d/%Y'), xy=(x[date_plot.index(tick_yr)], 
                             y[date_plot.index(tick_yr)]),  xycoords='data',
                             xytext=(50, 10), textcoords='offset points',
                             arrowprops=dict(arrowstyle="->"))
         elif tick_yr == max(date_list):
-            axes.annotate(tick_yr[:-9], xy=(x[date_plot.index(tick_yr)], 
+            axes.annotate(datetime.datetime.strptime(tick_yr,'%Y-%m-%d %H:%M:%S').strftime('%#m/%#d/%Y'), xy=(x[date_plot.index(tick_yr)], 
                             y[date_plot.index(tick_yr)]),  xycoords='data',
                             xytext=(-30, -70), textcoords='offset points',
                             arrowprops=dict(arrowstyle="->"))
         else:
-            axes.annotate(tick_yr[:-9], xy=(x[date_plot.index(tick_yr)], 
+            axes.annotate(datetime.datetime.strptime(tick_yr,'%Y-%m-%d %H:%M:%S').strftime('%#m/%#d/%Y'), xy=(x[date_plot.index(tick_yr)], 
                             y[date_plot.index(tick_yr)]),  xycoords='data',
                             xytext=(-50, 30), textcoords='offset points',
                             arrowprops=dict(arrowstyle="->"))

@@ -18,7 +18,7 @@ maindir = os.getcwd() + os.sep
 
 ############# USER INPUT BLOCK ###############################################
 gage_nets = ['cocorahs','usgs'] # choices: 'usgs' or 'cocorahs'
-criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 exceed_prob_list = [0.025, 0.05, 0.10, 0.25] # decimal exceendence probablity option (enter 0 to ignore)
 padj = 1.14
 ################# create a list of days to use in the analysis ########################
@@ -141,19 +141,19 @@ for exceed_prob in exceed_prob_list:
             fig = plt.figure()
             ax1 = fig.add_subplot(211)
         if gage_net == 'usgs' and padj != 1.0:
-            ax1.plot(years_plot, in_gage, ls='-', color='blue', lw=1.75,  marker = 'o', ms=4, label = str('Adjusted ' + gage_name + ' Gages (PADJ=' + str(padj) +')'))
+            ax1.plot(years_plot, in_gage, ls='-', color='blue', lw=1.75,  marker = 'o', ms=4, label = str('Adjusted ' + gage_name + ' gages (PADJ=' + str(padj) +')'))
         elif gage_net == 'cocorahs':
-            ax1.plot(years_plot, in_gage, ls='-', color='gold', lw=1.75, marker = 'o', ms=4, label = str(gage_name + ' Gages'))
+            ax1.plot(years_plot, in_gage, ls='-', color='gold', lw=1.75, marker = 'o', ms=4, label = str(gage_name + ' gages'))
         else:
-            ax1.plot(years_plot, in_gage, ls='-', color='blue', lw=1.75, marker = 'o', ms=4, label = str(gage_name + ' Gages'))
+            ax1.plot(years_plot, in_gage, ls='-', color='blue', lw=1.75, marker = 'o', ms=4, label = str(gage_name + ' gages'))
         if count == len(gage_nets):
             if padj != 1.0:
                 ax1.plot(years_plot, in_nex, ls='--', color='red', lw=1.75, marker = 's', ms=4, label = 'Adjusted NEXRAD-MPE (PADJ=' + str(padj) +')')
             else:
                 ax1.plot(years_plot, in_nex, ls='--', color='red', lw=1.75, marker = 's', ms=4, label = 'NEXRAD-MPE')
             ##################### Add labels and Gridlines ##################################
-            ax1.set_ylabel('Precipitation Depth (inches)')
-            ax1.set_xlabel('Calendar Year')
+            ax1.set_ylabel('Precipitation depth (inches)')
+            ax1.set_xlabel('Calendar year')
             ax1.set_ylim(0)
             ax1.xaxis.set_major_locator(MaxNLocator(nbins = len(years_plot)-1))
             ax1.set_xticklabels(years_plot,fontsize=11) # this is a work around for xtick label issue when plotting major x ticks
@@ -174,7 +174,7 @@ for exceed_prob in exceed_prob_list:
                 exceed_text = str(int(exceed_prob*100))
             else:
                 exceed_text = str("%.1f" % float(exceed_prob*100))
-            ax1.set_title(exceed_text + '% Exceedance Probability Quantiles')
+            ax1.set_title(exceed_text + '% Exceedance probability quantiles')
             ax1.grid(True)
             ax1.legend(loc='best',prop={'size':11},framealpha=0.6)
             if len(gage_nets) > 1:

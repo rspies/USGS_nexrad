@@ -159,7 +159,7 @@ for gage_type in gage_types:
     
     ################### Calculate Error Statistics and add to plot ################
     pbias, mae, ns = calc_errors.print_errors(in_gage,in_nex)
-    textstr = '\nMean Percent Difference:\n' + r'$\frac{1}{n}\sum_{i=1}^n\frac{(y_i-x_i)}{x_i}$ = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean Absolute Difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' in'  #Mean Absolute Difference
+    textstr = '\nMean Percent Difference:\n' + r'$\frac{1}{n}\sum_{i=1}^n\frac{(y_i-x_i)}{x_i}$ = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean Absolute Difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' inches'  #Mean Absolute Difference
     # these are matplotlib.patch.Patch properties
     props = dict(boxstyle='round', facecolor = '0.8', alpha=0.5)
     
@@ -174,16 +174,17 @@ for gage_type in gage_types:
     
     ##################### Add labels and Gridlines ##################################
     if padj != 1.0 or scf != 1.0:
-        text = 'Adjusted '
+        text = 'adjusted '
     else:
         text = ''
-    ax1.set_ylabel('Total ' + text + 'NEXRAD-MPE Precipitation (inches)')
-    ax1.set_xlabel('Total ' + text + 'USGS Gage Precipitation (inches)')
+    ax1.set_ylabel('Total ' + text + 'NEXRAD-MPE precipitation (inches)')
+    ax1.set_xlabel('Total ' + text + 'USGS gage precipitation (inches)')
     if criteria == 'Thaw':
-        text = 'Non-freezing Days'
+        text = 'Nonfreezing days'
     if criteria == 'Freeze':
-        text = 'Freezing Days'
-    ax1.set_title('Pointwise Total of Gages and Overlying NEXRAD cells\n' + gage_type + ' USGS Gages, ' + text + ': ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + ' - ' + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year))
+        text = 'Freezing days'
+    #ax1.set_title('Pointwise Total of Gages and Overlying NEXRAD cells\n' + gage_type + ' USGS Gages, ' + text + ': ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + ' - ' + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year))
+    ax1.set_title(text + ', ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + u"\u2013" + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year))    
     ax1.grid(True)
     ax1.legend(loc='lower right',numpoints = 1)
     

@@ -12,11 +12,12 @@ from scipy import stats
 import matplotlib.pyplot as plt
 plt.ioff()
 
-criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 gage_types = ['All','Heated','Non-Heated']
 gage_net = 'usgs'
 
-maindir = os.getcwd()[:-27]
+os.chdir("..")
+maindir = os.getcwd() + os.sep
 ################# create a list of days to use in the analysis ########################
 ystart = 2002 # begin data grouping
 yend = 2012 # end data grouping
@@ -26,7 +27,7 @@ padj = 1.14 #precip adjustment
 
 for gage_type in gage_types:
     print 'Processing: ' + gage_type + ' gages...'
-    fstatus = open(maindir + '\\figures\\final\\status_files\\' + gage_type + '_stations_stats_' + str(ystart) + '_' + str(yend) + '.txt', 'w')
+    fstatus = open(maindir + '\\figures\\final\\status_files\\' + gage_net + '_stations_nexrad_correl_stats_' + str(ystart) + '_' + str(yend) + '.txt', 'w')
     fstatus.write(str(start) + ' - ' + str(finish) + '\n')
     fstatus.write('Station' + '\t' + 'Missing days in analysis\n')
     print str(start) + ' - ' + str(finish)
@@ -173,19 +174,20 @@ for gage_type in gage_types:
         eq = 'y = ' + str("%.3f" % slope) + 'x + ' + str("%.3f" % intercept)
     else:
         eq = 'y = ' + str("%.3f" % slope) + 'x - ' + str("%.3f" % abs(intercept))
-    ax1.plot(x, line_fit, color='red', linestyle='-', label = eq +'\n' + r'R$^2$ = ' + str("%.2f" % r2) + '\n' + 'p-value = ' + str("%.3f" % p_value))
+    ax1.plot(x, line_fit, color='red', linestyle='-', label = eq +'\n' + r'$R^2$ = ' + str("%.2f" % r2) + '\n' + r'$p$' + '-value = ' + str("%.4f" % p_value))
 
     ##################### Add labels and Gridlines ##################################
     if padj != 1.0:
-        ax1.set_ylabel('((Cumulative Adjusted NEXRAD-MPE - Cumulative Adjusted ' + gage_net.upper() + ' Gage)/\nCumulative Adjusted ' + gage_net.upper() + ' Gage) x 100', fontsize=10)
+        ax1.set_ylabel('((Total adjusted NEXRAD-MPE - total adjusted ' + gage_net.upper() + ' gage)/\ntotal adjusted ' + gage_net.upper() + ' gage) x 100', fontsize=10)
     else:
-        ax1.set_ylabel('((Cumulative NEXRAD-MPE - Cumulative ' + gage_net.upper() + ' Gage)/\nCumulative ' + gage_net.upper() + ' Gage) x 100', fontsize=10)
-    ax1.set_xlabel('Distance from Radar KLOT (miles)')
+        ax1.set_ylabel('((Total NEXRAD-MPE - total ' + gage_net.upper() + ' gage)/\ntotal ' + gage_net.upper() + ' gage) x 100', fontsize=10)
+    ax1.set_xlabel('Distance from radar KLOT (miles)')
     if criteria == 'Thaw':
-        text = 'Non-freezing Days'
+        text = 'Nonfreezing days'
     if criteria == 'Freeze':
-        text = 'Freezing Days'
-    ax1.set_title('Gage-Radar Distance Correlation\n' + gage_type + ' ' + gage_net.upper() + ' Gages, ' + text + ': ' + str(start.month) +'/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) +'/' + str(finish.day) + '/' + str(finish.year)) 
+        text = 'Freezing days'
+    #ax1.set_title('Gage-Radar Distance Correlation\n' + gage_type + ' ' + gage_net.upper() + ' Gages, ' + text + ': ' + str(start.month) +'/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) +'/' + str(finish.day) + '/' + str(finish.year)) 
+    ax1.set_title(text + ', ' + str(start.month) +'/' + str(start.day) + '/' + str(start.year) + u"\u2013" + str(finish.month) +'/' + str(finish.day) + '/' + str(finish.year)) 
     ax1.grid(True)
     ax1.legend(loc='upper left',numpoints = 1)
     

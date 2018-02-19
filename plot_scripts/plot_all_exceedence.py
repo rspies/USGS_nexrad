@@ -19,7 +19,7 @@ fig = plt.figure()
 ax1 = fig.add_subplot(111)
 
 ############# USER INPUT BLOCK ###############################################
-gage_nets = ['cocorahs','usgs'] # choices: 'cocorahs','usgs' 
+gage_nets = ['usgs'] # choices: 'cocorahs','usgs' 
 # NEXRAD data will be pulled from paired files in gage_nets
 criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 exceed_prob_list = [0.001,0.01, 0.025, 0.05, 0.10, 0.25] # decimal exceendence probablity option (enter 0 to ignore)
@@ -168,9 +168,9 @@ for gage_net in gage_nets:
         ax1.plot(zscore, all_nex_exceed, ls='--', color='red', marker = 's', lw=1.75, label = lab + text)
 
 ##################### Add labels and Gridlines ##################################
-ax1.set_ylabel('Precipitation Depth (inches)\n Logarithmic Scale')
+ax1.set_ylabel('Precipitation depth (inches)\n',labelpad=-10)
 #ax1.set_xlabel('Daily Exceedence Probability (Percent)')
-ax1.set_xlabel('Exceedance Probability')
+ax1.set_xlabel('Exceedance probability')
 ax1.set_xticks(zscore) # only show the exceedence prob tick marks
 ax1.set_xticklabels(exceed_prob_list,rotation=90)
 ax1.set_yscale('log') # logarithmic y-axis scale
@@ -179,11 +179,12 @@ from matplotlib.ticker import ScalarFormatter
 ax1.yaxis.set_major_formatter(ScalarFormatter())
 
 if criteria == 'Thaw':
-    text = 'Non-freezing Days'
+    text = 'Nonfreezing days'
 if criteria == 'Freeze':
-    text = 'Freezing Days'
+    text = 'Freezing days'
 
-ax1.set_title('Daily Precipitation Quantiles\n' + text + ': ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + ' - ' + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year))
+#ax1.set_title('Daily Precipitation Quantiles\n' + text + ': ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + ' - ' + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year))
+ax1.set_title(text + ', ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + u"\u2013" + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year))
 ax1.grid(True)
 ax1.legend(loc='best',numpoints = 1, fontsize=11.5)
 

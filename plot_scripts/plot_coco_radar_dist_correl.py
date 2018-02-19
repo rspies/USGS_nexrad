@@ -12,7 +12,7 @@ from scipy import stats
 import matplotlib.pyplot as plt
 plt.ioff()
 
-criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 gage_net = 'cocorahs'
 padj = 1.14
 
@@ -154,19 +154,20 @@ if intercept > 0:
     eq = 'y = ' + str("%.3f" % slope) + 'x + ' + str("%.3f" % intercept)
 else:
     eq = 'y = ' + str("%.3f" % slope) + 'x - ' + str("%.3f" % abs(intercept))
-ax1.plot(x, line_fit, color='red', linestyle='-', label = eq +'\n' + r'R$^2$ = ' + str("%.2f" % r2) + '\n' + 'p-value = ' + str("%.4f" % p_value))
+ax1.plot(x, line_fit, color='red', linestyle='-', label = eq +'\n' + r'$R^2$ = ' + str("%.2f" % r2) + '\n' + r'$p$' + '-value = ' + str("%.4f" % p_value))
 
 ##################### Add labels and Gridlines ##################################
 if padj != 1.0:
-    ax1.set_ylabel('((Cumulative Adjusted NEXRAD-MPE - Cumulative CoCoRaHS Gage)/\nCumulative CoCoRaHS Gage) x 100', fontsize=10)
+    ax1.set_ylabel('((Total adjusted NEXRAD-MPE - total CoCoRaHS gage)/\ntotal CoCoRaHS gage) x 100', fontsize=10)
 else:
-    ax1.set_ylabel('((Cumulative NEXRAD-MPE - Cumulative CoCoRaHS Gage)/\nCumulative CoCoRaHS Gage) x 100', fontsize=10)
-ax1.set_xlabel('Distance from Radar KLOT (miles)')
+    ax1.set_ylabel('((Total NEXRAD-MPE - total CoCoRaHS gage)/\ntotal CoCoRaHS gage) x 100', fontsize=10)
+ax1.set_xlabel('Distance from radar KLOT (miles)')
 if criteria == 'Thaw':
-    text = 'Non-freezing Days'
+    text = 'Nonfreezing days'
 if criteria == 'Freeze':
-    text = 'Freezing Days'
-ax1.set_title('Gage-Radar Distance Correlation\n' + 'CoCoRaHS Gages, ' + text + ': ' + str(start.month) +'/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) +'/' + str(finish.day) + '/' + str(finish.year)) 
+    text = 'Freezing days'
+#ax1.set_title('Gage-Radar Distance Correlation\n' + 'CoCoRaHS Gages, ' + text + ': ' + str(start.month) +'/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) +'/' + str(finish.day) + '/' + str(finish.year)) 
+ax1.set_title(text + ', ' + str(start.month) +'/' + str(start.day) + '/' + str(start.year) + u"\u2013" + str(finish.month) +'/' + str(finish.day) + '/' + str(finish.year)) 
 ax1.grid(True)
 ax1.legend(loc='lower right',numpoints = 1)
 
