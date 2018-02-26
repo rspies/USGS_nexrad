@@ -18,8 +18,8 @@ os.chdir("..")
 maindir = os.getcwd() + os.sep
 criterium = ['Freeze','Thaw'] # choices: 'Freeze', 'Thaw'
 for criteria in criterium:
-    netx = 'cocorahs' # choices: 'usgs', 'cocorahs'
-    nety = 'nexrad' # choices: 'nexrad', 'cocorahs'
+    netx = 'usgs' # choices: 'usgs', 'cocorahs'
+    nety = 'cocorahs' # choices: 'nexrad', 'cocorahs'
 
     ###### NEXRAD and USGS gages are adjusted in current HSPF application #######
     nexadj = gadj = 1.00 # 1.14
@@ -163,7 +163,7 @@ for criteria in criterium:
     ax1.plot(in_gage, in_nex, color = 'k', ls='--', dashes=(2,2), lw =1.75, label = 'Observed')
     
     ######## option: add color coded scatter plot with gage availability value #####
-    label = 'Number of Available ' + netx_name + ' Gages'
+    label = 'Number of available ' + netx_name + ' gages'
     my_plot_module.colormap(fig,ax1,in_gage,in_nex,availables,label)
     
     ######## calculate max/min values for use on x/y axes #########################
@@ -178,7 +178,7 @@ for criteria in criterium:
     my_plot_module.annotate_dates(criteria,ystart,finish,date_plot,x,y,ax1)
     
     ##################### option: add number of days in analysis text box #################
-    textstr = 'Days in Analysis = ' + str("{:,}".format(total_days))
+    textstr = 'Days in analysis = ' + str("{:,}".format(total_days))
     # these are matplotlib.patch.Patch properties
     props = dict(boxstyle='round', facecolor = '0.8', alpha=0.5)
     
@@ -190,9 +190,9 @@ for criteria in criterium:
     ######## Label axes with appropriate precip and adjustments #######
     if nety == 'nexrad':
         if nexadj > 1.0:
-            ax1.set_ylabel('Cumulative spatial average of adjusted\n NEXRAD-MPE (inches)')
+            ax1.set_ylabel('Cumulative spatial average of adjusted\n NEXRAD'+ u"\u2013" +'MPE (inches)')
         else:
-            ax1.set_ylabel('Cumulative spatial average of\n NEXRAD-MPE (inches)')
+            ax1.set_ylabel('Cumulative spatial average of\n NEXRAD'+ u"\u2013" +'MPE (inches)')
     else:
         if nexadj > 1.0:
             ax1.set_ylabel('Cumulative spatial average of adjusted\n' + nety_name + ' gage precipitation (inches)')

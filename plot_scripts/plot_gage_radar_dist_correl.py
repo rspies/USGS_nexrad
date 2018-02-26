@@ -12,7 +12,7 @@ from scipy import stats
 import matplotlib.pyplot as plt
 plt.ioff()
 
-criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 gage_types = ['All','Heated','Non-Heated']
 gage_net = 'usgs'
 
@@ -177,10 +177,11 @@ for gage_type in gage_types:
     ax1.plot(x, line_fit, color='red', linestyle='-', label = eq +'\n' + r'$R^2$ = ' + str("%.2f" % r2) + '\n' + r'$p$' + '-value = ' + str("%.4f" % p_value))
 
     ##################### Add labels and Gridlines ##################################
+    plt.rcParams['axes.unicode_minus'] = False  # change axis tick label negative signs to normal hyphen (default is long hyphen? - USGS format request)
     if padj != 1.0:
-        ax1.set_ylabel('((Total adjusted NEXRAD-MPE - total adjusted ' + gage_net.upper() + ' gage)/\ntotal adjusted ' + gage_net.upper() + ' gage) x 100', fontsize=10)
+        ax1.set_ylabel('((Total adjusted NEXRAD'+ u"\u2013" +'MPE - total adjusted ' + gage_net.upper() + ' gage)/\ntotal adjusted ' + gage_net.upper() + ' gage) x 100', fontsize=10)
     else:
-        ax1.set_ylabel('((Total NEXRAD-MPE - total ' + gage_net.upper() + ' gage)/\ntotal ' + gage_net.upper() + ' gage) x 100', fontsize=10)
+        ax1.set_ylabel('((Total NEXRAD'+ u"\u2013" +'MPE - total ' + gage_net.upper() + ' gage)/\ntotal ' + gage_net.upper() + ' gage) x 100', fontsize=10)
     ax1.set_xlabel('Distance from radar KLOT (miles)')
     if criteria == 'Thaw':
         text = 'Nonfreezing days'

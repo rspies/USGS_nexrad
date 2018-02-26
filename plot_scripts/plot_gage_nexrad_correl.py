@@ -159,7 +159,7 @@ for gage_type in gage_types:
     
     ################### Calculate Error Statistics and add to plot ################
     pbias, mae, ns = calc_errors.print_errors(in_gage,in_nex)
-    textstr = '\nMean Percent Difference:\n' + r'$\frac{1}{n}\sum_{i=1}^n\frac{(y_i-x_i)}{x_i}$ = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean Absolute Difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' inches'  #Mean Absolute Difference
+    textstr = '\nMean percent difference:\n' + r'$\frac{1}{n}\sum_{i=1}^n\frac{(y_i-x_i)}{x_i}$ = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean absolute difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' inches'  #Mean Absolute Difference
     # these are matplotlib.patch.Patch properties
     props = dict(boxstyle='round', facecolor = '0.8', alpha=0.5)
     
@@ -177,7 +177,7 @@ for gage_type in gage_types:
         text = 'adjusted '
     else:
         text = ''
-    ax1.set_ylabel('Total ' + text + 'NEXRAD-MPE precipitation (inches)')
+    ax1.set_ylabel('Total ' + text + 'NEXRAD'+ u"\u2013" +'MPE precipitation (inches)')
     ax1.set_xlabel('Total ' + text + 'USGS gage precipitation (inches)')
     if criteria == 'Thaw':
         text = 'Nonfreezing days'

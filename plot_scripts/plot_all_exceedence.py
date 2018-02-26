@@ -19,9 +19,9 @@ fig = plt.figure()
 ax1 = fig.add_subplot(111)
 
 ############# USER INPUT BLOCK ###############################################
-gage_nets = ['usgs'] # choices: 'cocorahs','usgs' 
+gage_nets = ['usgs','cocorahs'] # choices: 'cocorahs','usgs' 
 # NEXRAD data will be pulled from paired files in gage_nets
-criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 exceed_prob_list = [0.001,0.01, 0.025, 0.05, 0.10, 0.25] # decimal exceendence probablity option (enter 0 to ignore)
 
 padj = 1.14 # Precip Adjustment Factor (snowcf applied below)
@@ -142,9 +142,9 @@ for gage_net in gage_nets:
         else:
             gtype = ''
         if padj != 1.0:
-            lab = 'Adjusted ' + gtype + 'USGS Gages '
+            lab = 'Adjusted ' + gtype + 'USGS gages '
         else:
-            lab = gtype + 'USGS Gages '
+            lab = gtype + 'USGS gages '
         ax1.plot(zscore, all_gage_exceed, ls='-', color='blue', marker = 'o', lw=1.75, label = lab + text)
 #        if padj != 1.0:
 #            lab = 'Adjusted NEXRAD-MPE (USGS pair) '
@@ -153,7 +153,7 @@ for gage_net in gage_nets:
 #        ax1.plot(zscore, all_nex_exceed, ls='--', color='cyan', marker = 's', lw=1.75, label = lab + text)        
         
     if gage_net == 'cocorahs':
-        ax1.plot(zscore, all_gage_exceed, ls='-', color='gold', marker = 'o', lw=1.75, label = 'CoCoRaHS Gages')
+        ax1.plot(zscore, all_gage_exceed, ls='-', color='gold', marker = 'o', lw=1.75, label = 'CoCoRaHS gages')
 #        if padj != 1.0:
 #            lab = 'Adjusted NEXRAD-MPE (CoCoRaHS pair) '
 #        else:
@@ -162,9 +162,9 @@ for gage_net in gage_nets:
 
     if cnt == len(gage_nets):
         if padj != 1.0:
-            lab = 'Adjusted NEXRAD-MPE '
+            lab = 'Adjusted NEXRAD'+ u"\u2013" +'MPE '
         else:
-            lab = 'NEXRAD-MPE '
+            lab = 'NEXRAD'+ u"\u2013" +'MPE '
         ax1.plot(zscore, all_nex_exceed, ls='--', color='red', marker = 's', lw=1.75, label = lab + text)
 
 ##################### Add labels and Gridlines ##################################

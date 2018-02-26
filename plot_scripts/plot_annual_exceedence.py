@@ -18,7 +18,7 @@ maindir = os.getcwd() + os.sep
 
 ############# USER INPUT BLOCK ###############################################
 gage_nets = ['cocorahs','usgs'] # choices: 'usgs' or 'cocorahs'
-criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 exceed_prob_list = [0.025, 0.05, 0.10, 0.25] # decimal exceendence probablity option (enter 0 to ignore)
 padj = 1.14
 ################# create a list of days to use in the analysis ########################
@@ -148,9 +148,9 @@ for exceed_prob in exceed_prob_list:
             ax1.plot(years_plot, in_gage, ls='-', color='blue', lw=1.75, marker = 'o', ms=4, label = str(gage_name + ' gages'))
         if count == len(gage_nets):
             if padj != 1.0:
-                ax1.plot(years_plot, in_nex, ls='--', color='red', lw=1.75, marker = 's', ms=4, label = 'Adjusted NEXRAD-MPE (PADJ=' + str(padj) +')')
+                ax1.plot(years_plot, in_nex, ls='--', color='red', lw=1.75, marker = 's', ms=4, label = 'Adjusted NEXRAD'+ u"\u2013" +'MPE (PADJ=' + str(padj) +')')
             else:
-                ax1.plot(years_plot, in_nex, ls='--', color='red', lw=1.75, marker = 's', ms=4, label = 'NEXRAD-MPE')
+                ax1.plot(years_plot, in_nex, ls='--', color='red', lw=1.75, marker = 's', ms=4, label = 'NEXRAD'+ u"\u2013" +'MPE')
             ##################### Add labels and Gridlines ##################################
             ax1.set_ylabel('Precipitation depth (inches)')
             ax1.set_xlabel('Calendar year')

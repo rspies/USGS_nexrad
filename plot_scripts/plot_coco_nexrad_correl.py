@@ -16,10 +16,10 @@ plt.ioff()
 os.chdir("..")
 maindir = os.getcwd() + os.sep
 
-criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 gage_net = 'cocorahs'
 point_labels = 'no' # choices: 'yes', 'no' #plot point number labels
-padj = 1.00
+padj = 1.14
 
 ################# create a list of days to use in the analysis ########################
 ystart = 2007 # begin data grouping
@@ -144,7 +144,7 @@ else:
     
 ################### Calculate Error Statistics and add to plot ################
 pbias, mae, ns = calc_errors.print_errors(in_gage,in_nex)
-textstr = '\nMean Percent Difference:\n' + r'$\frac{1}{n}\sum_{i=1}^n\frac{(y_i-x_i)}{x_i}$ = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean Absolute Difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' inches'  #Mean Absolute Difference
+textstr = '\nMean percent difference:\n' + r'$\frac{1}{n}\sum_{i=1}^n\frac{(y_i-x_i)}{x_i}$ = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean absolute difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' inches'  #Mean Absolute Difference
 #textstr = 'Mean Percent Difference = ' + str('%.1f' % pbias) +'%\n' + 'Mean Absolute Difference = ' + str('%.2f' % mae) + ' in'
 # these are matplotlib.patch.Patch properties
 props = dict(boxstyle='round', facecolor = '0.8', alpha=0.5)
@@ -161,9 +161,9 @@ if point_labels == 'yes':
 ##################### Add labels and Gridlines ##################################
 ax1.set_xlabel('Total CoCoRaHS gage precipitation (inches)')
 if padj > 1.0:
-    ax1.set_ylabel('Total adjusted NEXRAD-MPE precipitation (inches)')
+    ax1.set_ylabel('Total adjusted NEXRAD'+ u"\u2013" +'MPE precipitation (inches)')
 else:
-    ax1.set_ylabel('Total NEXRAD-MPE precipitation (inches)')
+    ax1.set_ylabel('Total NEXRAD'+ u"\u2013" +'MPE precipitation (inches)')
 if criteria == 'Thaw':
     text = 'Nonfreezing days'
 if criteria == 'Freeze':
