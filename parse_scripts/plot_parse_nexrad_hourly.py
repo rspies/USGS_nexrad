@@ -17,8 +17,8 @@ maindir = os.getcwd() + os.sep
 ######### User Input -> Options ############
 csv_out = 'no'
 mean_hist = 'yes'  # choice to creat plot 'yes' or 'no'
-type_plot = 'Fraction Hours Precip' # choices: 'Mean', 'Mean Intensity', 'Mean Cell', 'Total', 'Temperature Frequency', 'Hours Precip', 'Fraction Hours Precip'
-type_plot2 = '' # choices: 'Temperature Frequency', ''
+type_plot = 'Mean Cell' # choices: 'Mean', 'Mean Intensity', 'Mean Cell', 'Total', 'Temperature Frequency', 'Hours Precip', 'Fraction Hours Precip'
+type_plot2 = 'Temperature Frequency' # choices: 'Temperature Frequency', ''
 
 ### calculate helpful summary statistics input ###
 # temp range
@@ -283,7 +283,7 @@ if mean_hist == 'yes':
     ax1.set_xticks(tick_num+width)
     tick_labels = []
     for key in range(1,len(categories)+1):
-        tick_labels.append(str(categories['cat'+str(key)][0]) + ' ' + u"\u2013" + ' ' + str(categories['cat'+str(key)][1]))
+        tick_labels.append(str(categories['cat'+str(key)][0]) + u"\u2013" + str(categories['cat'+str(key)][1]))
     if len(categories) > 10:
         ax1.set_xticklabels(tick_labels,rotation=90,fontsize=9.8)
     else:

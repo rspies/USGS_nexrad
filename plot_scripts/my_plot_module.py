@@ -33,9 +33,11 @@ def colormap(in_fig,axes,x,y,color_values,text):
     cbar.ax.set_ylabel(text, rotation=270,labelpad=15)
 ###############################################################################    
 def axis_limits(x,y,axes):
-    if max(x) > 100 or max(y) > 100:
+    if max(x) > 300 or max(y) > 300:
+        base = 30
+    elif max(x) > 100 or max(y) > 100:
         base = 25
-    elif max(x) > 50 or max(y) > 50:
+    elif max(x) > 80 or max(y) > 80:
         base = 20
     elif max(x) > 25 or max(y) > 25:
         base = 10
@@ -80,7 +82,7 @@ def annotate_dates(criteria,ystart,finish,date_plot,x,y,axes):
                     date_list.remove(each)
             tick_cnt += 1 
     
-    for tick_yr in date_list: # always label first and last data point
+    for tick_yr in date_list: # always label first and last data point (max was -30,-70 modified 2/27/2018)
         if tick_yr == min(date_list) or tick_yr == date_list[1]:
             axes.annotate(datetime.datetime.strptime(tick_yr,'%Y-%m-%d %H:%M:%S').strftime('%#m/%#d/%Y'), xy=(x[date_plot.index(tick_yr)], 
                             y[date_plot.index(tick_yr)]),  xycoords='data',
@@ -89,7 +91,7 @@ def annotate_dates(criteria,ystart,finish,date_plot,x,y,axes):
         elif tick_yr == max(date_list):
             axes.annotate(datetime.datetime.strptime(tick_yr,'%Y-%m-%d %H:%M:%S').strftime('%#m/%#d/%Y'), xy=(x[date_plot.index(tick_yr)], 
                             y[date_plot.index(tick_yr)]),  xycoords='data',
-                            xytext=(-30, -70), textcoords='offset points',
+                            xytext=(-40, -50), textcoords='offset points',
                             arrowprops=dict(arrowstyle="->"))
         else:
             axes.annotate(datetime.datetime.strptime(tick_yr,'%Y-%m-%d %H:%M:%S').strftime('%#m/%#d/%Y'), xy=(x[date_plot.index(tick_yr)], 

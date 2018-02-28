@@ -21,7 +21,7 @@ ax1 = fig.add_subplot(111)
 ############# USER INPUT BLOCK ###############################################
 gage_nets = ['usgs','cocorahs'] # choices: 'cocorahs','usgs' 
 # NEXRAD data will be pulled from paired files in gage_nets
-criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 exceed_prob_list = [0.001,0.01, 0.025, 0.05, 0.10, 0.25] # decimal exceendence probablity option (enter 0 to ignore)
 
 padj = 1.14 # Precip Adjustment Factor (snowcf applied below)
@@ -142,7 +142,7 @@ for gage_net in gage_nets:
         else:
             gtype = ''
         if padj != 1.0:
-            lab = 'Adjusted ' + gtype + 'USGS gages '
+            lab = 'Adjusted ' + gtype.lower() + 'USGS gages '
         else:
             lab = gtype + 'USGS gages '
         ax1.plot(zscore, all_gage_exceed, ls='-', color='blue', marker = 'o', lw=1.75, label = lab + text)

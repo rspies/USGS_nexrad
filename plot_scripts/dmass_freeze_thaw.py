@@ -19,10 +19,10 @@ maindir = os.getcwd() + os.sep
 criterium = ['Freeze','Thaw'] # choices: 'Freeze', 'Thaw'
 for criteria in criterium:
     netx = 'usgs' # choices: 'usgs', 'cocorahs'
-    nety = 'cocorahs' # choices: 'nexrad', 'cocorahs'
+    nety = 'nexrad' # choices: 'nexrad', 'cocorahs'
 
     ###### NEXRAD and USGS gages are adjusted in current HSPF application #######
-    nexadj = gadj = 1.00 # 1.14
+    nexadj = gadj = 1.14 # 1.14
     if netx == 'cocorahs': # don't adjust cocorahs data
         gadj = 1.0
     if netx == 'usgs' and nety == 'cocorahs': # don't apply adj to nety when compring usgs to cocorahs
