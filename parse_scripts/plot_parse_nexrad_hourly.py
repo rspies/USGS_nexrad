@@ -17,8 +17,8 @@ maindir = os.getcwd() + os.sep
 ######### User Input -> Options ############
 csv_out = 'no'
 mean_hist = 'yes'  # choice to creat plot 'yes' or 'no'
-type_plot = 'Mean Cell' # choices: 'Mean', 'Mean Intensity', 'Mean Cell', 'Total', 'Temperature Frequency', 'Hours Precip', 'Fraction Hours Precip'
-type_plot2 = 'Temperature Frequency' # choices: 'Temperature Frequency', ''
+type_plot = 'Mean Intensity' # choices: 'Mean', 'Mean Intensity', 'Mean Cell', 'Total', 'Temperature Frequency', 'Hours Precip', 'Fraction Hours Precip'
+type_plot2 = '' # choices: 'Temperature Frequency', ''
 
 ### calculate helpful summary statistics input ###
 # temp range
@@ -254,10 +254,10 @@ if mean_hist == 'yes':
         ax1.set_ylabel('Accumulated precipitation depth (inches)')
         #ax1.set_title('Mean NEXRAD-MPE\n'  + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
     elif type_plot == 'Mean Intensity':
-        ax1.set_ylabel('Precipitation intensity (in/hr)')
+        ax1.set_ylabel('Precipitation intensity\n(inches per hour)')
         #ax1.set_title('Spatial Mean Hourly NEXRAD-MPE Average Intensity\n'  + 'During Hours with Precipitation: ' + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
     elif type_plot == 'Mean':
-        ax1.set_ylabel('Precipitation intensity (in/hr)')
+        ax1.set_ylabel('Precipitation intensity\n(inches per hour)')
         #ax1.set_title('Spatial Mean Hourly NEXRAD-MPE Average Intensity\n'  + 'During All Hours: ' + str(start.month) + '/' + str(start.day) + '/' + str(start.year) + ' - ' + str(finish.month) + '/' + str(finish.day) + '/' + str(finish.year))
     elif type_plot == 'Hours Precip':
         ax1.set_ylabel('Hours with precipitation')

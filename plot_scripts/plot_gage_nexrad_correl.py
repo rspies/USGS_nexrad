@@ -159,12 +159,16 @@ for gage_type in gage_types:
     
     ################### Calculate Error Statistics and add to plot ################
     pbias, mae, ns = calc_errors.print_errors(in_gage,in_nex)
-    textstr = '\nMean percent difference:\n' + r'$\frac{1}{n}\sum_{i=1}^n\frac{(y_i-x_i)}{x_i}$ = ' + str('%.1f' % pbias) +'%\n\n' + 'Mean absolute difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' inches'  #Mean Absolute Difference
+    textstr = '\nMean percent difference:\n' + r'$\frac{1}{n}\sum_{i=1}^n\frac{(y_i-x_i)}{x_i}$ = ' + str('%.1f' % pbias) +' percent\n\n' + 'Mean absolute difference:\n ' + r'$\frac{1}{n}\sum_{i=1}^n\vert y_i - x_i\vert$ = '+ str('%.2f' % mae) + ' inches'  #Mean Absolute Difference
+    varstr = '$\it{n}$'+': number of points\n' + '$\it{i}$'+': the point index\n' + '${y_i}$'+': the y-axis value of the $i^{th}$ point\n' + '${x_i}$'+': the x-axis value of the $i^{th}$ point'
     # these are matplotlib.patch.Patch properties
     props = dict(boxstyle='round', facecolor = '0.8', alpha=0.5)
     
     # place a text box in upper left in axes coords
     ax1.text(0.03, 0.97, textstr, transform=ax1.transAxes, fontsize=12.5,
+            verticalalignment='top', bbox=props)
+    # place a text box in lower left in axes coords
+    ax1.text(0.57, 0.19, varstr, transform=ax1.transAxes, fontsize=10.5,
             verticalalignment='top', bbox=props)
     
     ###### OPTION: annotate site number labels without overlapping
@@ -186,7 +190,7 @@ for gage_type in gage_types:
     #ax1.set_title('Pointwise Total of Gages and Overlying NEXRAD cells\n' + gage_type + ' USGS Gages, ' + text + ': ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + ' - ' + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year))
     ax1.set_title(text + ', ' + str(start.month)+'/'+str(start.day)+'/'+str(start.year) + u"\u2013" + str(finish.month)+'/'+str(finish.day)+'/'+str(finish.year))    
     ax1.grid(True)
-    ax1.legend(loc='lower right',numpoints = 1)
+    ax1.legend(bbox_to_anchor=(1.0, 0.37),numpoints = 1)
     
     if padj != 1.0:
         plt.savefig(maindir + '\\figures\\final\\' + criteria.lower() + '_days\\usgs_gages\\' + gage_type + '_station_correlation_' + criteria + '_days_' + str(ystart) + '_padj' + '.png', dpi=150, bbox_inches='tight')

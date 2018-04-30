@@ -18,7 +18,7 @@ maindir = os.getcwd() + os.sep
 
 ############# USER INPUT BLOCK ###############################################
 gage_nets = ['cocorahs','usgs'] # choices: 'usgs' or 'cocorahs'
-criteria = 'Thaw' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
+criteria = 'Freeze' # choicea are 'Freeze' or 'Thaw' #see find_freeze_days.py for more info
 exceed_prob_list = [0.025, 0.05, 0.10, 0.25] # decimal exceendence probablity option (enter 0 to ignore)
 padj = 1.14
 ################# create a list of days to use in the analysis ########################
@@ -174,9 +174,13 @@ for exceed_prob in exceed_prob_list:
                 exceed_text = str(int(exceed_prob*100))
             else:
                 exceed_text = str("%.1f" % float(exceed_prob*100))
-            ax1.set_title(exceed_text + '% Exceedance probability quantiles')
+            ax1.set_title(exceed_text + ' percent exceedance probability quantiles')
             ax1.grid(True)
-            ax1.legend(loc='best',prop={'size':11},framealpha=0.6)
+            if criteria == 'Freeze' and exceed_prob == 0.10: # fix for legend placed over data (10% freezing days)
+                ax1.legend(loc='upper left',prop={'size':11},framealpha=0.6)
+                ax1.set_ylim([0,0.6])
+            else:
+                ax1.legend(loc='best',prop={'size':11},framealpha=0.6)
             if len(gage_nets) > 1:
                 gage_net_title = 'all_gages'
             else:
